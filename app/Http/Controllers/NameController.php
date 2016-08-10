@@ -40,8 +40,8 @@ class NameController extends Controller
     public function fetchWord($word)
     {
         $curl = curl_init();
-
-        $url = "http://words.bighugelabs.com/api/2/9aaea29a82de7e2fce8888d57f20bc35/{$word}/json";
+        $key = env("BIG_LABS_KEY");
+        $url = "http://words.bighugelabs.com/api/2/{$key}/{$word}/json";
 
         curl_setopt_array($curl, [
             CURLOPT_URL => $url,
@@ -61,8 +61,8 @@ class NameController extends Controller
     public function fetchDomains($word)
     {
         $curl = curl_init();
-
-        $url = "https://domainr.p.mashape.com/v1/search?mashape-key=GPNMAE3i51mshdvYznEIaLUKr9PHp1CWMo8jsnrFzw4p7BVQKN&q={$word}";
+        $key = env("DOMAINR_KEY");
+        $url = "https://domainr.p.mashape.com/v1/search?mashape-key={$key}&q={$word}";
 
         curl_setopt_array($curl, [
             CURLOPT_URL => $url,
